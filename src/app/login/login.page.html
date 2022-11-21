@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Login Page</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="login">
+        <ion-label>LOGIN</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="register">
+        <ion-label>REGISTER</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form (ngSubmit)="login()" [formGroup]="credentials" *ngIf="selectedSegment==='login'">
+    <ion-item fill="outline" class="ion-margin-bottom">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
+    </ion-item>
+    <ion-item fill="outline" class="ion-margin-bottom">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password needs to be 8
+        characters
+      </ion-note>
+    </ion-item>
+    <ion-button type="submit" expand="block" [disabled]="!credentials.valid" fill="outline">Log in</ion-button>
+  </form>
+  <form (ngSubmit)="register()" [formGroup]="credentials" *ngIf="selectedSegment==='register'">
+    <ion-item fill="outline" class="ion-margin-bottom">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+      <ion-note slot="error" *ngIf="(email.dirty || email.touched) && email.errors">Email is invalid</ion-note>
+    </ion-item>
+
+    <ion-item fill="outline" class="ion-margin-bottom">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+      <ion-note slot="error" *ngIf="(password.dirty || password.touched) && password.errors">Password needs to be 8
+        characters
+      </ion-note>
+    </ion-item>
+  </form>
+  <form [formGroup]="formData" (ngSubmit)="register()" *ngIf="selectedSegment==='register'" >
+    <ion-item fill="outline" class="ion-margin-bottom">
+      <ion-label position="floating">First Name</ion-label>
+      <ion-input formControlName="fName"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline" class="ion-margin-bottom">
+      <ion-label position="floating">Last Name</ion-label>
+      <ion-input formControlName="lName"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline" class="ion-margin-bottom">
+      <ion-label>Fuel Station Owner</ion-label>
+      <ion-checkbox slot="end" (ionChange)="isChecked($event)"></ion-checkbox>
+    </ion-item>
+
+    <ion-item fill="outline" class="ion-margin-bottom" *ngIf="isAFuelStationOwner===true">
+      <ion-label position="floating">Fuel Station Name</ion-label>
+      <ion-input formControlName="stationName"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline" class="ion-margin-bottom" *ngIf="isAFuelStationOwner===true">
+      <ion-label position="floating">Location</ion-label>
+      <ion-input formControlName="location"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline" class="ion-margin-bottom" *ngIf="isAFuelStationOwner===true">
+      <ion-label position="floating">Full Capacity</ion-label>
+      <ion-input formControlName="capacity"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline" class="ion-margin-bottom" *ngIf="isAFuelStationOwner===true">
+      <ion-label position="floating">Current Stock</ion-label>
+      <ion-input formControlName="stock"></ion-input>
+    </ion-item>
+
+    <ion-item fill="outline" class="ion-margin-bottom" *ngIf="isAFuelStationOwner===true">
+      <ion-label position="floating">Service time</ion-label>
+      <ion-input formControlName="avgTime"></ion-input>
+    </ion-item>
+
+
+    <ion-button type="button" expand="block" color="secondary" fill="outline" (click)="register()">Create account
+    </ion-button>
+  </form>
+
+</ion-content>

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "fuel-queue-manager": {
+      "hosting": {
+        "app": [
+          "fuel-queue-manager"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "fuel-queue-manager"
+  }
+}

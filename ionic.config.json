@@ -1,0 +1,7 @@
+{
+  "name": "fuel-queue-manager",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

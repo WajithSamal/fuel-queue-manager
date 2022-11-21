@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Service Queue </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="owners"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content
+  [style.--background]="'#00000000'"
+>
+  <ion-button expand="full" (click)="startScanner()" [hidden]="scanActive">
+    SCAN
+  </ion-button>
+  <ion-row class="scan-button" [hidden]="!scanActive">
+    <ion-col class="ion-no-padding">
+      <ion-button expand="full" (click)="stopScanner()">Stop</ion-button>
+    </ion-col>
+  </ion-row>
+  <div class="scan-box" [hidden]="!scanActive"></div>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" [hidden]="scanActive">
+    <ion-fab-button (click)="logout()">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

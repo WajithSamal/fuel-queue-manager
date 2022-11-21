@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SCAN ME</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ngx-qrcode
+      [value]="userId"
+      [width]="500"
+      errorCorrectionLevel="L">
+    </ngx-qrcode>
+    <br>
+    <ion-button type="button" expand="block" fill="outline" color="secondary"  href="{{location}}">Navigate
+      <ion-icon slot="end" name="navigate-circle"></ion-icon>
+    </ion-button>
+    <ion-button type="button" expand="block" fill="outline" color="secondary" (click)="showAlert('Warning','Do you really want to exit the current queue')">Exit From Queue
+      <ion-icon slot="end" name="exit"></ion-icon>
+    </ion-button>
+  </ion-card>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="logout()">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
